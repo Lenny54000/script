@@ -1,0 +1,5 @@
+document.body.addEventListener('mousemove', e => {
+  const dx = (window.innerWidth / 2 - e.pageX) / 50;
+  const dy = (window.innerHeight / 2 - e.pageY) / 50;
+  document.body.style.transform = `translate(${dx}px, ${dy}px)`;
+});

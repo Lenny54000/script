@@ -1,0 +1,15 @@
+let frames = ['🌑','🌒','🌓','🌔','🌕','🌖','🌗','🌘'];
+let i = 0;
+
+const interval = setInterval(() => {
+  console.clear();
+  console.log('Lune en rotation :', frames[i % frames.length]);
+  i++;
+}, 200);
+
+// Pour arrêter l'animation après 10 secondes
+setTimeout(() => {
+  clearInterval(interval);
+  console.clear();
+  console.log('🌕 Animation terminée.');
+}, 10000);

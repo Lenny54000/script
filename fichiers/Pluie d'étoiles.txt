@@ -1,0 +1,33 @@
+(function pluieDEmojis() {
+  const emoji = '🌟'; // Change ça pour ce que tu veux : ❄️, 💀, 🐱, 🧠, etc.
+  const nombre = 300; // Nombre d'emojis à faire tomber
+
+  for (let i = 0; i < nombre; i++) {
+    const el = document.createElement('div');
+    el.textContent = emoji;
+    Object.assign(el.style, {
+      position: 'fixed',
+      left: `${Math.random() * 100}%`,
+      top: '-2em',
+      fontSize: `${Math.random() * 24 + 16}px`,
+      zIndex: 9999,
+      pointerEvents: 'none',
+      animation: `descend ${Math.random() * 5 + 5}s linear infinite`,
+    });
+    document.body.appendChild(el);
+  }
+
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes descend {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+    div[style*="animation: descend"] {
+      will-change: transform;
+    }
+  `;
+  document.head.appendChild(style);
+})();

@@ -1,0 +1,7 @@
+const rainbow = () => {
+  let hue = 0;
+  setInterval(() => {
+    document.body.style.filter = `hue-rotate(${hue++}deg)`;
+  }, 30);
+};
+rainbow();

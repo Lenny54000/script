@@ -1,0 +1,17 @@
+for (let i = 0; i < 2; i++) {
+  const eye = document.createElement('div');
+  eye.style.cssText = 'width:50px;height:50px;background:white;border-radius:50%;border:3px solid black;position:fixed;top:50px;left:'+(i*80+50)+'px;z-index:9999;display:flex;align-items:center;justify-content:center;';
+  const pupil = document.createElement('div');
+  pupil.style.cssText = 'width:20px;height:20px;background:black;border-radius:50%;position:relative;';
+  eye.appendChild(pupil);
+  document.body.appendChild(eye);
+
+  window.addEventListener('mousemove', e => {
+    const rect = eye.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + 25);
+    const dy = e.clientY - (rect.top + 25);
+    const angle = Math.atan2(dy, dx);
+    pupil.style.left = Math.cos(angle) * 10 + 'px';
+    pupil.style.top = Math.sin(angle) * 10 + 'px';
+  });
+}

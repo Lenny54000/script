@@ -1,0 +1,6 @@
+document.body.addEventListener('click', () => {
+  const synth = window.speechSynthesis;
+  const utter = new SpeechSynthesisUtterance("What are doing man!  Stop it now please.");
+  synth.speak(utter);
+  console.log("💬 Elle t’a parlé, non ?");
+});

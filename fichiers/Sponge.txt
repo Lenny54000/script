@@ -1,0 +1,20 @@
+const sponge = document.createElement('div');
+sponge.innerText = '🧽';
+sponge.style.cssText = 'position:fixed;left:0;top:0;font-size:100px;z-index:9999;pointer-events:none;';
+document.body.appendChild(sponge);
+
+let x = 0;
+let y = 0;
+const clean = setInterval(() => {
+  sponge.style.left = x + 'px';
+  sponge.style.top = y + 'px';
+  x += 100;
+  if (x > window.innerWidth) {
+    x = 0;
+    y += 100;
+  }
+  if (y > window.innerHeight) {
+    clearInterval(clean);
+    setTimeout(() => sponge.remove(), 1000);
+  }
+}, 100);
