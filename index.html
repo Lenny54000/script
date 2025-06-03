@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Copieur de fichiers</title>
+  <style>
+    button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Copier le contenu des fichiers texte</h1>
+  <div id="buttons"></div>
+
+  <script>
+    fetch('/api/list')
+      .then(res => res.json())
+      .then(fichiers => {
+        const container = document.getElementById('buttons');
+        fichiers.forEach(nom => {
+          const bouton = document.createElement('button');
+          bouton.textContent = `Copier ${nom}`;
+          bouton.onclick = async () => {
+            const res = await fetch('/fichiers/' + nom);
+            const texte = await res.text();
+            await navigator.clipboard.writeText(texte);
+            alert(`${nom} copié dans le presse-papier`);
+          };
+          container.appendChild(bouton);
+        });
+      });
+  </script>
+</body>
+</html>
